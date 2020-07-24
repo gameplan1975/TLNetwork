@@ -1,12 +1,9 @@
 Rails.application.routes.draw do
-  get 'questions/new'
-  get 'questions/show'
-  get 'questions/index'
-  get 'questions/edit'
-  devise_for :users
+  get 'homes/top'
   resources :genres
   resources :questions
-  root to: "questions#index"
+  root "homes#top"
+  devise_for :users
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end

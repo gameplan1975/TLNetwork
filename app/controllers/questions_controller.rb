@@ -10,7 +10,7 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    @Question = Question.find_by(id: params[:id])
+    @question = Question.find_by(id: params[:id])
     #@user = User.find_by(id: @question.user_id)
   end
     
@@ -19,6 +19,8 @@ class QuestionsController < ApplicationController
     
   def create
     @question = Question.new(question_params)
+    @question.user_id = current_user.id
+
     if @question.save
       redirect_to questions_path
     else
@@ -45,6 +47,6 @@ class QuestionsController < ApplicationController
   end
   
   def question_params
-    params.require(:question).permit(:name, :memo, :accrual_date)
+    params.require(:question).permit(:name, :memo, :accrual_date, :user_id, :genre_id)
   end
 end

@@ -1,0 +1,11 @@
+<h1>Time Line Network</h1>
+<p>welcome to this historic quiz site!</p>
+<br>
+<% if user_signed_in? %>
+  <%= link_to "できごと一覧", questions_path, class: 'btn btn-primary'  %>
+  <%= link_to "ジャンル一覧", genres_path, class: 'btn btn-primary'  %>
+  <%= link_to "ログアウト", destroy_user_session_path, method: :delete ,class: 'btn btn-danger' %>
+<% else %>
+  <%= link_to "新規登録", new_user_registration_path, class: 'btn btn-primary'  %>
+  <%= link_to "ログイン", new_user_session_path, class: 'btn btn-primary'  %>
+<% end %>
