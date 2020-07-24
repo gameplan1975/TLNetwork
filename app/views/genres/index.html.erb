@@ -3,9 +3,9 @@
 <% @genres.each do |genre| %>
   <div>
     <%= genre.name %>
-    <%= link_to 'Edit', edit_genre_path(genre) %>
-    <%= link_to 'Destroy', genre, method: :delete %>
+    <%= link_to 'Edit', edit_genre_path(genre), class: 'btn btn-outline-info btn-sm'  %>
+    <%= link_to 'Destroy', genre, method: :delete, class: 'btn btn-outline-danger btn-sm'  %>
   </div>
 <% end %>
 <br>
-<%= link_to 'New genre', new_genre_path %>
+<%= link_to 'New genre', new_genre_path, class: 'btn btn-primary' %>

@@ -1,5 +1,13 @@
 {
   "name": "TLNetwork",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "bootstrap": "4.3.1",
+    "jquery": "^3.5.1"
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:gameplan1975/TLNetwork.git",
+  "author": "gameplan1975 <gameplan1975@gmail.com>",
+  "license": "MIT"
 }
