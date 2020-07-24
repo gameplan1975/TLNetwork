@@ -1,0 +1,16 @@
+<h1>Questions index</h1>
+
+<% @questions.each do |question| %>
+  <div>
+    <%= question.name %>
+    <%= question.accrual_date %>
+    <%= link_to 'show', question_path(question) %>
+    <%= link_to 'Edit', edit_question_path(question) %>
+    <%= link_to 'Destroy', question, method: :delete %>
+
+  </div>
+<% end %>
+<br>
+<%= link_to 'New question', new_question_path %><br>
+<%= link_to 'Main Page', "players#top" %><br>
+<%= link_to 'Genre Index', genres_path %>

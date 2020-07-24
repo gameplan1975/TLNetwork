@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  memo: MyString
+  accrual_time: 2020-07-24
+  playable: false
+
+two:
+  name: MyString
+  memo: MyString
+  accrual_time: 2020-07-24
+  playable: false

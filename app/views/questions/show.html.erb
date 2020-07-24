@@ -1,0 +1,11 @@
+<h1>Show Question</h1>
+<p>できごと:
+<%= @question.name %></p>
+<p>起こった年月:
+<%= @question.accrual_date %></p>
+<p>うんちく:
+<%= @question.memo %></p>
+<p>作成者: 不明</p>
+
+<%= link_to 'Edit', edit_question_path(@question) %> |
+<%= link_to 'Back', questions_path %>

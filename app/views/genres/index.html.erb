@@ -1,0 +1,11 @@
+<h1>Genres index</h1>
+
+<% @genres.each do |genre| %>
+  <div>
+    <%= genre.name %>
+    <%= link_to 'Edit', edit_genre_path(genre) %>
+    <%= link_to 'Destroy', genre, method: :delete %>
+  </div>
+<% end %>
+<br>
+<%= link_to 'New genre', new_genre_path %>
