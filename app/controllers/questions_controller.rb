@@ -7,14 +7,15 @@ class QuestionsController < ApplicationController
     
   def new
     @question = Question.new
+    @genres = Genre.all
   end
 
   def show
     @question = Question.find_by(id: params[:id])
-    #@user = User.find_by(id: @question.user_id)
   end
     
   def edit
+    @genres = Genre.all
   end
     
   def create
@@ -47,6 +48,6 @@ class QuestionsController < ApplicationController
   end
   
   def question_params
-    params.require(:question).permit(:name, :memo, :accrual_date, :user_id, :genre_id)
+    params.require(:question).permit(:name, :memo, :user_id, :genre_id, :year, :month)
   end
 end

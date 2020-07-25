@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  game: 1
+  correct: 1
+  favorite_category: MyString
+  total_time: 2020-07-25 11:41:31
+  comment: MyString
+  image: MyString
+
+two:
+  game: 1
+  correct: 1
+  favorite_category: MyString
+  total_time: 2020-07-25 11:41:31
+  comment: MyString
+  image: MyString
