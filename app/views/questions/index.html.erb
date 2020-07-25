@@ -1,16 +1,18 @@
 <h1>Questions index</h1>
-
-<% @questions.each do |question| %>
-  <div>
-    <%= question.name %>
-    <%= question.accrual_date %>
-    <%= link_to 'show', question_path(question), class: 'btn btn-outline-primary btn-sm' %>
-    <%= link_to 'Edit', edit_question_path(question), class: 'btn btn-outline-info btn-sm'  %>
-    <%= link_to 'Destroy', question, method: :delete, class: 'btn btn-outline-danger btn-sm'  %>
-
-  </div>
-<% end %>
+  <table>
+    <tbody>
+      <% @questions.each do |question| %>
+        <tr>
+          <th><%= question.name %></th>
+          <th><%= question.accrual_date %></th>
+          <th><%= link_to 'show', question_path(question), class: 'btn btn-outline-primary btn-sm' %></th>
+          <th><%= link_to 'Edit', edit_question_path(question), class: 'btn btn-outline-info btn-sm'  %></th>
+          <th><%= link_to 'Destroy', question, method: :delete, class: 'btn btn-outline-danger btn-sm'  %></th>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <br>
 <%= link_to 'New question', new_question_path, class: 'btn btn-primary' %><br><br>
-<%= link_to 'Main Page', "players#top", class: 'btn btn-primary'  %><br><br>
+<%= link_to 'Main Page', homes_top_path, class: 'btn btn-primary'  %><br><br>
 <%= link_to 'Genre Index', genres_path, class: 'btn btn-primary' %>
