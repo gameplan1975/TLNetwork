@@ -1,2 +1,17 @@
-<h1>Players#show</h1>
-<p>Find me in app/views/players/show.html.erb</p>
+<h1><%= @player.user.name %>'s Page </h1>
+<p>User Name:
+<%= @player.user.name %></p>
+<p>Lank: BEBINNER </p>
+<p>Games: 
+<%= @player.game %></p>
+<p>Corrects: 
+<%= @player.correct %></p>
+<p>Played Time: 
+<%= @player.total_time %></p>
+<p>Favorite Genre: 
+<%= @player.favorite_category %></p>
+<p>Comment: 
+<%= @player.comment %></p>
+
+<%= link_to 'Edit', edit_player_path(@player), class: 'btn btn-primary' %>
+<%= link_to 'Back', players_path, class: 'btn btn-primary' %>
