@@ -3,15 +3,19 @@
   <%= f.text_field :name %><br><br>
   <a><%= f.label :year %><br>
   <button class="btn btn-danger">A.D.</button>
-  <%= f.text_field :year %></a><br><br>
+  <%= f.number_field :year %></a><br><br>
   <%= f.label :month %>
   <%= f.select :month, [["1月",1],["2月",2],["3月",3],["4月",4],["5月",5],["6月",6],["7月",7],
   ["8月",8],["9月",9],["10月",10],["11月",11],["12月",12]] %><br>
-
-
-  <h4>Genre</h4>
+  <%= f.radio_button :genre_id, 1 %>
+  <%= f.label :genre_id, :世界史 %>
+  <%= f.radio_button :genre_id, 2 %>
+  <%= f.label :genre, :日本史 %>
+  <%= f.radio_button :genre_id, 4 %>
+  <%= f.label :genre_id, :IT %>
+  <br>
   <%  @genres.each do |genre| %> 
-    <%= "* " + genre.name %>
+    <%= "* " + genre.name %><%= genre.id %>
   <% end %>
   <br><br>
   <%= f.label :memo %><br>

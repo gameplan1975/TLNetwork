@@ -3,7 +3,7 @@ class PlayersController < ApplicationController
   before_action :default_date_setting, only: [:create]
 
   def index
-    @players = Player.all
+    @players = Player.all.page(params[:page]).per(5)
   end
     
   def new
@@ -12,6 +12,7 @@ class PlayersController < ApplicationController
 
   def show
     @player = Player.find_by(id: params[:id])
+    @questions = Question.where(user_id: params[:id]).page(params[:page]).per(3)
   end
     
   def edit

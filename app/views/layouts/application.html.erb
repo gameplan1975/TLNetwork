@@ -12,6 +12,9 @@
 
   <body>
     <div class="container container-sm bg-color-white" >
+      <% if user_signed_in? %>
+        <%= current_user.name %>
+      <% end %>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
       <%= yield %>

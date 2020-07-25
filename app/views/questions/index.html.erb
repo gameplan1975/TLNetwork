@@ -1,9 +1,10 @@
 <h1>Questions index</h1>
-  <table>
+  <table class="table" >
     <thead>
       <tr>
         <th>Question</th>
         <th>Year/Month</th>
+        <th>Genre</th>
         <th colspan="3"></th>
       </tr>
   </thead>
@@ -12,6 +13,8 @@
         <tr>
           <th><%= question.name %></th>
           <th><p><%= question.year %>年<%= question.month %> 月</th>
+          <th><%= question.genre_id %></th>
+          <!-- いったん名前の代わりにidを表示　-->
           <th><%= link_to 'show', question_path(question), class: 'btn btn-outline-primary btn-sm' %></th>
           <th><%= link_to 'Edit', edit_question_path(question), class: 'btn btn-outline-info btn-sm'  %></th>
           <th><%= link_to 'Destroy', question, method: :delete, class: 'btn btn-outline-danger btn-sm'  %></th>
@@ -19,7 +22,8 @@
       <% end %>
     </tbody>
   </table>
+  <%= paginate @questions %>
 <br>
 <%= link_to 'New question', new_question_path, class: 'btn btn-primary' %>
-<%= link_to 'Main Page', homes_top_path, class: 'btn btn-primary'  %>
+<%= link_to 'Player Index', players_path, class: 'btn btn-primary'  %>
 <%= link_to 'Genre Index', genres_path, class: 'btn btn-primary' %>

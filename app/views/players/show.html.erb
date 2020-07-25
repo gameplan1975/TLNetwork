@@ -1,17 +1,48 @@
 <h1><%= @player.user.name %>'s Page </h1>
-<p>User Name:
-<%= @player.user.name %></p>
-<p>Lank: BEBINNER </p>
-<p>Games: 
-<%= @player.game %></p>
-<p>Corrects: 
-<%= @player.correct %></p>
-<p>Played Time: 
-<%= @player.total_time %></p>
-<p>Favorite Genre: 
-<%= @player.favorite_category %></p>
-<p>Comment: 
-<%= @player.comment %></p>
+<div class="row">
+  <div class="col-5">
+    <h4>Profile</h4>
+    <p>User Name:
+    <%= @player.user.name %></p>
+    <p>Lank: BEGINNER </p>
+    <p>Games: 
+    <%= @player.game %></p>
+    <p>Corrects: 
+    <%= @player.correct %></p>
+    <p>Played Time: 
+    <%= @player.total_time %></p>
+    <p>Favorite Genre: 
+    <%= @player.favorite_category %></p>
+    <p>Comment: 
+    <%= @player.comment %></p><br>
+    <%= link_to 'Edit', edit_player_path(@player), class: 'btn btn-primary' %>
+    <%= link_to 'Back', players_path, class: 'btn btn-primary' %>
+  </div>
 
-<%= link_to 'Edit', edit_player_path(@player), class: 'btn btn-primary' %>
-<%= link_to 'Back', players_path, class: 'btn btn-primary' %>
+  <div　class="col-7" >
+    <h4>Created Questions</h4>
+    <P><%= @questions.count %> created</p>
+    <table class="table" >
+      <thead>
+        <tr>
+          <th>Question</th>
+          <th>Year/Month</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @questions.each do |question| %>
+          <tr>
+            <th><%= question.name %></th>
+            <th><p><%= question.year %>年<%= question.month %> 月</th>
+            <th><%= link_to 'show', question_path(question), class: 'btn btn-outline-primary btn-sm' %></th>
+            <th><%= link_to 'Edit', edit_question_path(question), class: 'btn btn-outline-info btn-sm'  %></th>
+            <th><%= link_to 'Destroy', question, method: :delete, class: 'btn btn-outline-danger btn-sm'  %></th>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= paginate @questions %>
+    <th><%= link_to 'New Question', new_question_path, class: 'btn btn-outline-info btn-sm' %></th>
+  </div>
+</div>
