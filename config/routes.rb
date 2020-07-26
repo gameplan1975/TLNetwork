@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'games/prepare'
+  get 'games/play'
+  get 'games/result'
   get 'homes/top'
   resources :genres
   resources :questions
