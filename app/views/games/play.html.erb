@@ -5,9 +5,11 @@
   <% @questions.each do |question| %>
     <tr>
       <% select += 1 %>
-      <th><%= select %><%= question.name %></th>
+      <th><%= select %>:
+      <%= question.name %></th>
       <th><input type="button" class="btn btn-primary" value="click!"></th>
     </tr>
     <% end %>
 </table>
+
 <span class="text-success">genre:<%= @genre.name %></span>

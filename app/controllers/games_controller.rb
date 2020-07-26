@@ -4,9 +4,9 @@ class GamesController < ApplicationController
   end
 
   def play
-      @category = params[:select_genre]
-      @genre = Genre.find_by(id: @category)
-      @questions = Question.where(genre_id: @category).order("RANDOM()").limit(4)
+    @category = params[:select_genre]
+    @genre = Genre.find_by(id: @category)
+    @questions = Question.where(genre_id: @category).order("RANDOM()").limit(4)
   end
 
   def result
