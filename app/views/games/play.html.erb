@@ -1,5 +1,15 @@
 <h1>Let's Play</h1>
 <h4>Q.1 </h4>
+
+<!--超　ちから技で問題を受け渡し　-->
+<% select0 = @questions[0].id %>
+<% select1 = @questions[1].id %>
+<% select2 = @questions[2].id %>
+<% select3 = @questions[3].id %>
+
+
+
+
 <% select = 0 %>
 <table>
   <% @questions.each do |question| %>
@@ -7,7 +17,7 @@
       <% select += 1 %>
       <th><%= select %>:
       <%= question.name %></th>
-      <th><%= link_to 'Play!', games_result_path(:select_question => question) , class: 'btn btn-success'  %></th>
+      <th><%= link_to 'Play!', games_result_path(:select_question => question, :select0 => select0, :select1 => select1, :select2 => select2, :select3 => select3) , class: 'btn btn-success'  %></th>
     </tr>
   <% end %>
 </table>

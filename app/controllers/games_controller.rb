@@ -12,5 +12,15 @@ class GamesController < ApplicationController
   def result
     @answer = params[:select_question]
     @question = Question.find_by(id: @answer)
+
+    @select0 = params[:select0]
+    @select1 = params[:select1]
+    @select2 = params[:select2]
+    @select3 = params[:select3]
+
+    @question0 = Question.find_by(id: @select0)
+    @question1 = Question.find_by(id: @select1)
+    @question2 = Question.find_by(id: @select2)
+    @question3 = Question.find_by(id: @select3)
   end
 end
