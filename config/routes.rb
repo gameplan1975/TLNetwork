@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   resources :genres
   resources :questions
   resources :players
+  resources :messages do
+    resources :comments
+  end
   root "homes#top"
   devise_for :users
   if Rails.env.development?

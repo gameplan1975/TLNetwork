@@ -10,5 +10,7 @@ class GamesController < ApplicationController
   end
 
   def result
+    @answer = params[:select_question]
+    @question = Question.find_by(id: @answer)
   end
 end

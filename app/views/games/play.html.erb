@@ -7,9 +7,8 @@
       <% select += 1 %>
       <th><%= select %>:
       <%= question.name %></th>
-      <th><input type="button" class="btn btn-primary" value="click!"></th>
+      <th><%= link_to 'Play!', games_result_path(:select_question => question) , class: 'btn btn-success'  %></th>
     </tr>
-    <% end %>
+  <% end %>
 </table>
-
 <span class="text-success">genre:<%= @genre.name %></span>
