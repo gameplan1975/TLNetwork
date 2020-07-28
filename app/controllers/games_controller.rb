@@ -22,5 +22,10 @@ class GamesController < ApplicationController
     @question1 = Question.find_by(id: @select1)
     @question2 = Question.find_by(id: @select2)
     @question3 = Question.find_by(id: @select3)
+
+    #ゲーム数の追加
+    @player = Player.find(current_user.player.id)
+    @player.game += 1
+    #@player.update(:game)
   end
 end
