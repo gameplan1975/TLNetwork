@@ -1,11 +1,10 @@
 <h1>Players index</h1>
   <table class="table">
-    <thead>
+    <thead class="thead-dark">
       <tr>
         <th>Name</th>
         <th>Played Games</th>
         <th>Total Corrects</th>
-        <th>Created Questions</th>
         <th colspan="3"></th>
       </tr>
   </thead>
@@ -25,6 +24,7 @@
   <%= paginate @players %>
 <br>
 <%= link_to 'Main Page', homes_top_path, class: 'btn btn-primary'  %>
-<%= link_to 'Question Index', questions_path, class: 'btn btn-primary' %>
-<%= link_to 'Genre Index', genres_path, class: 'btn btn-primary' %>
+<%= link_to 'Questions Index', questions_path, class: 'btn btn-primary' %>
+<%= link_to 'Genres Index', genres_path, class: 'btn btn-primary' %>
+<%= link_to 'Massage Board', messages_path, class: 'btn btn-primary' %>
 <%= link_to 'Try Quiz!', games_prepare_path, class: 'btn btn-success' %>

@@ -12,7 +12,7 @@ class PlayersController < ApplicationController
 
   def show
     @player = Player.find_by(id: params[:id])
-    @questions = Question.where(user_id: params[:id]).page(params[:page]).per(3)
+    @questions = Question.where(user_id: @player.user.id).page(params[:page]).per(3)
   end
     
   def edit

@@ -25,7 +25,7 @@ class GamesController < ApplicationController
 
     #ゲーム数の追加
     @player = Player.find(current_user.player.id)
-    @player.game += 1
-    #@player.update(:game)
+    game_number = @player.game + 1
+    @player.update(game: game_number)
   end
 end

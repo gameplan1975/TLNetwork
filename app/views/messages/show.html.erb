@@ -1,15 +1,19 @@
 <h1>Message show </h1>
 <div class="container">
-  <p id="notice"><%= notice %></p>
-  <div class="message-text">
+  <div class="card">
     <p><strong>Title</strong>：<%= @message.title %></p>
     <p><strong>Content</strong>：<%= @message.content %></p>
   </div>
   <p>Follow Comments</p>
+    <p>コメント一覧（ここから下の内容が重要）</p>
+  <!-- このcomments_areaというHTMLのidを取得して、そのdivの部分だけを更新する -->
   <div id="comments_area">
+    <!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
     <%= render partial: 'comments/index', locals: { comments: @comments, message: @message } %>
   </div>
+  <hr>
   <%= render partial: 'comments/form', locals: { comment: @comment, message: @message } %>
-  <%= link_to 'edit', edit_message_path(@message) %> |
-  <%= link_to 'back', messages_path %>
+  <hr>
+  <%= link_to 'edit', edit_message_path(@message), class: "btn btn-primary" %>
+  <%= link_to 'back', messages_path, class: "btn btn-primary" %>
 </div>

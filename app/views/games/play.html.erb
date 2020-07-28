@@ -1,14 +1,11 @@
 <h1>Let's Play</h1>
-<h4>Q.1 </h4>
+<h4 class="text-success">genre:<%= @genre.name %></h4>
 
 <!--超　ちから技で問題を受け渡し　-->
 <% select0 = @questions[0].id %>
 <% select1 = @questions[1].id %>
 <% select2 = @questions[2].id %>
 <% select3 = @questions[3].id %>
-
-
-
 
 <% select = 0 %>
 <table>
@@ -21,4 +18,3 @@
     </tr>
   <% end %>
 </table>
-<span class="text-success">genre:<%= @genre.name %></span>

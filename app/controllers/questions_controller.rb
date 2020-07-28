@@ -3,6 +3,7 @@ class QuestionsController < ApplicationController
 
   def index
     @questions = Question.all.page(params[:page]).per(5)
+    @genres= Genre.all
     #@questions = Question.all.includes(:genres).page(params[:page]).per(5)
     #で無理なのがわからん
 

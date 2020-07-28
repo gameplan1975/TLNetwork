@@ -6,9 +6,9 @@ class CommentsController < ApplicationController
     @comment = @message.comments.build(comment_params)
       respond_to do |format|
       if @comment.save
-        format.js { rende :index }
+        format.js { render :index }
       else
-        format.html { redirect_to message_path(@message) }
+        format.html { redirect_to message_path(@message), notice: 'fail'  }
       end
     end
   end
@@ -45,7 +45,7 @@ class CommentsController < ApplicationController
   end
 
   def set_message
-    @message = message.find(params[:message_id])
+    @message = Message.find(params[:message_id])
   end
 
  end

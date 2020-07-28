@@ -44,6 +44,6 @@
     </div>
 </div>
 <hr>
-<%= link_to 'Retry!', games_play_path(:select_genre => @question.genre_id), class: 'btn btn-success'  %>
+<%= link_to 'Retry!', games_play_path(select_genre: @question.genre_id), class: 'btn btn-success'  %>
 <%= link_to 'Select Genre', games_prepare_path, class: 'btn btn-success'  %>
 <%= link_to 'End Game', player_path(current_user.player.id), class: 'btn btn-warning'  %>

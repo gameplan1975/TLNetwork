@@ -1,11 +1,12 @@
 <h1>Questions index</h1>
   <table class="table" >
-    <thead>
+    <thead class="thead-dark">
       <tr>
         <th>Question</th>
         <th>Year/Month</th>
         <th>Genre</th>
         <th colspan="3"></th>
+        <th>playable</th>
       </tr>
   </thead>
     <tbody>
@@ -15,17 +16,22 @@
           <th><p><%= question.year %>年<%= question.month %> 月</th>
           <th><%= question.genre_id %></th>
           <!-- いったん名前の代わりにidを表示　-->
-          <th><%= link_to 'show', question_path(question), class: 'btn btn-outline-primary btn-sm' %></th>
+          <th><%= link_to 'Show', question_path(question), class: 'btn btn-outline-primary btn-sm' %></th>
           <th><%= link_to 'Edit', edit_question_path(question), class: 'btn btn-outline-info btn-sm'  %></th>
           <th><%= link_to 'Destroy', question, method: :delete, class: 'btn btn-outline-danger btn-sm'  %></th>
+          <% if question.playable == true || question.playable == nil%>
+            <th><%= link_to 'Stop', questions_path, class: 'btn btn-outline-primary btn-sm'  %></th>
+          <% else %>
+            <th><%= link_to 'Restart', questions_path, class: 'btn btn-outline-primary btn-sm'  %></th>
+          <% end %>
         </tr>
       <% end %>
     </tbody>
   </table>
   <%= paginate @questions %>
 <br>
-<%= link_to 'New question', new_question_path, class: 'btn btn-primary' %>
-<%= link_to 'Player Index', players_path, class: 'btn btn-primary'  %>
-<%= link_to 'Genre Index', genres_path, class: 'btn btn-primary' %>
+<%= link_to 'Create Question', new_question_path, class: 'btn btn-primary' %>
+<%= link_to 'Players Index', players_path, class: 'btn btn-primary'  %>
+<%= link_to 'Genres Index', genres_path, class: 'btn btn-primary' %>
 <%= link_to 'Massage Board', messages_path, class: 'btn btn-primary' %>
 <%= link_to 'Try Quiz!', games_prepare_path, class: 'btn btn-success' %>

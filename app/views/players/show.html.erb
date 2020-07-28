@@ -1,22 +1,37 @@
-<h1><%= @player.user.name %>'s Page </h1>
 <div class="row">
   <div class="col-5">
-    <h4>Profile</h4>
+    <h4><%= @player.user.name %>'s Profile</h4>
     <p>User Name:
     <%= @player.user.name %></p>
-    <p>Lank: BEGINNER </p>
+    <div>
+      <span>Lank:</span>
+      <% if @player.game >= 100 %>
+        <span class="text-danger">Master!</span>
+      <% elsif @player.game >= 10 %>
+        <span class="text-success">Veteran</span>
+      <% elsif @player.game >= 5 %>
+        <span class="text-info">apprentice</span>
+      <% else %>
+        <span class="text-muted">Beginner</span>   
+      <% end %>
+      </span>
+    </div>
     <p>Games: 
     <%= @player.game %></p>
     <p>Corrects: 
     <%= @player.correct %></p>
-    <p>Played Time: 
-    <%= @player.total_time %></p>
-    <p>Favorite Genre: 
-    <%= @player.favorite_category %></p>
-    <p>Comment: 
-    <%= @player.comment %></p><br>
+    <div class="card m-1">
+      <p>Favorite Genre: <p>
+      <%= @player.favorite_category %>
+    </div>
+    <div class="card m-1">
+      <p>Comment: </p>
+      <%= @player.comment %>
+    </div>
+    <hr>
     <%= link_to 'Edit', edit_player_path(@player), class: 'btn btn-primary' %>
     <%= link_to 'Back', players_path, class: 'btn btn-primary' %>
+    <%= link_to 'Massage Board', messages_path, class: 'btn btn-primary' %>
     <%= link_to 'Try Quiz!', games_prepare_path, class: 'btn btn-success' %>
   </div>
 
