@@ -3,7 +3,11 @@
   "private": true,
   "dependencies": {
     "bootstrap": "4.3.1",
-    "jquery": "^3.5.1"
+    "bootstrap-honoka": "^4.3.1",
+    "jquery": "^3.5.1",
+    "sortable": "^2.0.0",
+    "sortablejs": "^1.10.2",
+    "vue": "^2.6.11"
   },
   "version": "1.0.0",
   "main": "index.js",

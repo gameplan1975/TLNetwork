@@ -1,6 +1,4 @@
 <h1>Games#result</h1>
-<h5> your answer: <%= @question.name %> </h5>
-<h5> your total played games:  <%= current_user.player.game %></h5>
 <hr>
 <p>Other Question </P>
 <table class="table">
@@ -10,24 +8,6 @@
     <%= @question0.month %> 月</P></th>
     <th><button type="button" class="btn btn-primary mb-8" data-toggle="modal" data-target="#memoModal">Open Memo</button></th>
   </tr>
-    <tr>
-    <th><p><%= @question1.name %></th>
-    <th><%= @question1.year %> 年
-    <%= @question1.month %> 月</P></th>
-    <th><button type="button" class="btn btn-primary mb-8" data-toggle="modal" data-target="#memoModal">Open Memo</button></th>
-  </tr>
-    <tr>
-    <th><p><%= @question2.name %></th>
-    <th><%= @question2.year %> 年
-    <%= @question2.month %> 月</P></th>
-    <th><button type="button" class="btn btn-primary mb-8" data-toggle="modal" data-target="#memoModal">Open Memo</button></th>
-  </tr>
-    <tr>
-    <th><p><%= @question3.name %></th>
-    <th><%= @question3.year %> 年
-    <%= @question3.month %> 月</P></th>
-    <th><button type="button" class="btn btn-primary mb-8" data-toggle="modal" data-target="#memoModal">Open Memo</button></th>
-   </tr>
 </table>
 <div class="modal fade" id="memoModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
     <div class="modal-dialog">

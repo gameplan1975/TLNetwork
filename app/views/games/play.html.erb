@@ -1,20 +1,27 @@
 <h1>Let's Play</h1>
 <h4 class="text-success">genre:<%= @genre.name %></h4>
 
-<!--超　ちから技で問題を受け渡し　-->
-<% select0 = @questions[0].id %>
-<% select1 = @questions[1].id %>
-<% select2 = @questions[2].id %>
-<% select3 = @questions[3].id %>
+<% section = 0 %>
+<% selects = [] %>
 
-<% select = 0 %>
-<table>
+
+<ul id="selection" class="list-group" style="list-style: none;">
   <% @questions.each do |question| %>
-    <tr>
-      <% select += 1 %>
-      <th><%= select %>:
-      <%= question.name %></th>
-      <th><%= link_to 'Play!', games_result_path(:select_question => question, :select0 => select0, :select1 => select1, :select2 => select2, :select3 => select3) , class: 'btn btn-success'  %></th>
-    </tr>
+    <% section += 1 %>
+    <li data-id="<%= question.id %>" class="list-group-item m-1"><%= section %>. <%= question.name %><li>
   <% end %>
-</table>
+  </ul>
+<br>
+<input type="button" id="id01" value="set Array" onclick="getArray();">
+
+<script>
+  var selection = document.getElementById('selection');
+  var sortable = Sortable.create(selection);
+
+  function getArray(){
+    var selectlist = sortable.toArray();
+    const newselectlist = selectlist.filter(n => n !== "1oj" && n !== "1mr");
+    console.log(newselectlist);
+  }
+</script>
+

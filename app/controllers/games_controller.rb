@@ -10,18 +10,14 @@ class GamesController < ApplicationController
   end
 
   def result
-    @answer = params[:select_question]
-    @question = Question.find_by(id: @answer)
+    @select = params[:selects]
 
-    @select0 = params[:select0]
-    @select1 = params[:select1]
-    @select2 = params[:select2]
-    @select3 = params[:select3]
+    binding.irb
 
-    @question0 = Question.find_by(id: @select0)
-    @question1 = Question.find_by(id: @select1)
-    @question2 = Question.find_by(id: @select2)
-    @question3 = Question.find_by(id: @select3)
+    #@question0 = Question.find_by(id: @select0)
+    #@question1 = Question.find_by(id: @select1)
+    #@question2 = Question.find_by(id: @select2)
+    #@question3 = Question.find_by(id: @select3)
 
     #ゲーム数の追加
     @player = Player.find(current_user.player.id)
