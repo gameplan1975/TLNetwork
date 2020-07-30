@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+  before_action :login_check
   before_action :set_question, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -53,5 +54,11 @@ class QuestionsController < ApplicationController
   
   def question_params
     params.require(:question).permit(:name, :memo, :user_id, :genre_id, :year, :month)
+  end
+
+  def login_check
+    if current_user == nil
+      render :root
+    end
   end
 end

@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :login_check
   before_action :set_message, only: [:create, :edit, :update]
   
   def create
@@ -46,6 +47,12 @@ class CommentsController < ApplicationController
 
   def set_message
     @message = Message.find(params[:message_id])
+  end
+
+  def login_check
+    if current_user == nil
+      render :root
+    end
   end
 
  end

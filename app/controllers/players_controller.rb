@@ -1,4 +1,5 @@
 class PlayersController < ApplicationController
+  before_action :login_check
   before_action :set_player, only: [:show, :edit, :update, :destroy]
   before_action :default_date_setting, only: [:create]
 
@@ -19,12 +20,21 @@ class PlayersController < ApplicationController
   end
     
   def create
+    if current_user.player.id == nil
+      render :root
+    end
     @player = Player.new(player_params)
     #この辺りをストロングパラメータにしたい
     @player.user_id = current_user.id
     @player.game = 0
     @player.correct = 0
     @player.total_time = 0
+
+    if @player.id == 0
+      @Player.admin = true
+    else
+      @player.admin = false
+    end
 
     if @player.save
       redirect_to players_path
@@ -52,7 +62,13 @@ class PlayersController < ApplicationController
   end
   
   def player_params
-    params.require(:player).permit(:name, :user_id, :favorite_category, :game, :correct, :total_time, :comment)
+    params.require(:player).permit(:name, :user_id, :favorite_category, :game, :correct, :total_time, :comment, :admin)
+  end
+
+  def login_check
+    if current_user == nil
+      render :root
+    end
   end
 
   def default_date_setting

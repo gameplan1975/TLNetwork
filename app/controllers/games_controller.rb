@@ -1,4 +1,6 @@
 class GamesController < ApplicationController
+  before_acton :login_check
+
   def prepare
     @genres = Genre.all
   end
@@ -23,5 +25,12 @@ class GamesController < ApplicationController
     @player = Player.find(current_user.player.id)
     game_number = @player.game + 1
     @player.update(game: game_number)
+  end
+
+  private
+  def login_check
+    if current_user == nil
+      render :root
+    end
   end
 end

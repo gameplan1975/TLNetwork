@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+  before_action :login_check
   before_action :set_message, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -47,5 +48,11 @@ class MessagesController < ApplicationController
 
   def message_params
     params.require(:message).permit(:title, :content, :user_id)
+  end
+
+  def login_check
+    if current_user == nil
+      render :root
+    end
   end
 end
