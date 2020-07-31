@@ -1,0 +1,17 @@
+<h1>Time Line Network</h1>
+<p>welcome to this historic quiz site!</p>
+<br>
+<% if user_signed_in? %>
+  <% if current_user.player == nil %>
+    <%= link_to 'Create Player', new_player_path, class: 'btn btn-warning' %><br><br>
+  <% else %>
+    <%= link_to "Questions Index", questions_path, class: 'btn btn-primary'  %>
+    <%= link_to "Genres Index", genres_path, class: 'btn btn-primary'  %>
+    <%= link_to 'Show Player', player_path(current_user.player.id), class: 'btn btn-info' %><br><br>
+    <%= link_to 'Try Quiz!', games_prepare_path, class: 'btn btn-success' %><br><br>
+  <% end %>
+<% else %>
+  <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary'  %>
+  <%= link_to "Sign In", new_user_session_path, class: 'btn btn-primary'  %>
+<% end %>
+

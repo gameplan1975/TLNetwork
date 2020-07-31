@@ -1,0 +1,73 @@
+<script>
+  audiojs.events.ready(function() {
+    var as = audiojs.createAll();
+  });
+</script>
+<div class="row">
+  <div class="col-5">
+    <h4><%= @player.user.name %>'s Profile</h4>
+    <p>User Name:
+    <%= @player.user.name %></p>
+    <div>
+      <span>Lank:</span>
+      <% if @player.game >= 100 %>
+        <span class="text-danger">Master!</span>
+      <% elsif @player.game >= 10 %>
+        <span class="text-success">Veteran</span>
+      <% elsif @player.game >= 5 %>
+        <span class="text-info">apprentice</span>
+      <% else %>
+        <span class="text-muted">Beginner</span>   
+      <% end %>
+      </span>
+    </div>
+    <p>Games: 
+    <%= @player.game %></p>
+    <p>Corrects: 
+    <%= @player.correct %></p>
+    <div class="card m-1">
+      <p>Favorite Genre: <p>
+      <%= @player.favorite_category %>
+    </div>
+    <div class="card m-1">
+      <p>Comment: </p>
+      <%= @player.comment %>
+    </div>
+    <div>
+      <%= audio_tag("/audios/sample.mp3",id:"audio") %>
+    </div>
+    <P style="color: gray">*mp3ファイル対応のブラウザでお楽しみください</p>
+    <hr>
+    <%= link_to 'Edit', edit_player_path(@player), class: 'btn btn-primary' %>
+    <%= link_to 'Back', players_path, class: 'btn btn-primary' %>
+    <%= link_to 'Massage Board', messages_path, class: 'btn btn-primary' %>
+    <%= link_to 'Try Quiz!', games_prepare_path, class: 'btn btn-success' %>
+  </div>
+
+  <div　class="col-7" >
+    <h4>Created Questions</h4>
+    <P><%= @questions.count %> created</p>
+    <table class="table" >
+      <thead>
+        <tr>
+          <th>Question</th>
+          <th>Year/Month</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @questions.each do |question| %>
+          <tr>
+            <th><%= question.name %></th>
+            <th><p><%= question.year %>年<%= question.month %> 月</th>
+            <th><%= link_to 'show', question_path(question), class: 'btn btn-outline-primary btn-sm' %></th>
+            <th><%= link_to 'Edit', edit_question_path(question), class: 'btn btn-outline-info btn-sm'  %></th>
+            <th><%= link_to 'Destroy', question, method: :delete, class: 'btn btn-outline-danger btn-sm'  %></th>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= paginate @questions %>
+    <th><%= link_to 'New Question', new_question_path, class: 'btn btn-outline-info btn-sm' %></th>
+  </div>
+</div>

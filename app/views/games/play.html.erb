@@ -1,0 +1,27 @@
+<h1>Let's Play</h1>
+<h4 class="text-success">genre:<%= @genre.name %></h4>
+<p>この中で、最も古いできごとは？</P>
+<br>
+
+<table class="table">
+<tr>
+<th><%= @questions[0].name %></th>
+<th><%= link_to 'select!', games_result_path(:answer => @questions[0].id, :select0 => @questions[0].id, :select1 => @questions[1].id,
+:select2 => @questions[2], :select3 => @questions[3].id ), class: 'btn btn-success'  %></th>
+</tr>
+<tr>
+<th><%= @questions[1].name %></th>
+<th><%= link_to 'select!', games_result_path(:answer => @questions[1].id, :select0 => @questions[0].id, :select1 => @questions[1].id,
+:select2 => @questions[2], :select3 => @questions[3].id ), class: 'btn btn-success'  %></th>
+</tr>
+<tr>
+<th><%= @questions[2].name %></th>
+<th><%= link_to 'select!', games_result_path(:answer => @questions[2].id, :select0 => @questions[0].id, :select1 => @questions[1].id,
+:select2 => @questions[2], :select3 => @questions[3].id ), class: 'btn btn-success'  %></th>
+</tr>
+<tr>
+<th><%= @questions[3].name %></th>
+<th><%= link_to 'select!', games_result_path(:answer => @questions[3].id, :select0 => @questions[0].id, :select1 => @questions[1].id,
+:select2 => @questions[2], :select3 => @questions[3].id ), class: 'btn btn-success'  %></th>
+</tr>
+</table>

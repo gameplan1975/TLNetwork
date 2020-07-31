@@ -1,8 +1,9 @@
 class GenresController < ApplicationController
+  before_action :login_check
   before_action :set_genre, only: [:show, :edit, :update, :destroy]
 
   def index
-      @genres = Genre.all
+      @genres = Genre.all.page(params[:page]).per(5)
   end
   
   def new
@@ -41,5 +42,11 @@ class GenresController < ApplicationController
 
   def genre_params
     params.require(:genre).permit(:name)
+  end
+
+  def login_check
+    if current_user == nil
+      render :root
+    end
   end
 end

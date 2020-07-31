@@ -1,24 +1,32 @@
 class QuestionsController < ApplicationController
+  before_action :login_check
   before_action :set_question, only: [:show, :edit, :update, :destroy]
 
   def index
-    @questions = Question.all
+    @questions = Question.all.page(params[:page]).per(5)
+    @genres= Genre.all
+    #@questions = Question.all.includes(:genres).page(params[:page]).per(5)
+    #で無理なのがわからん
+
   end
     
   def new
     @question = Question.new
+    @genres = Genre.all
   end
 
   def show
-    @Question = Question.find_by(id: params[:id])
-    #@user = User.find_by(id: @question.user_id)
+    @question = Question.find_by(id: params[:id])
   end
     
   def edit
+    @genres = Genre.all
   end
     
   def create
     @question = Question.new(question_params)
+    @question.user_id = current_user.id
+
     if @question.save
       redirect_to questions_path
     else
@@ -45,6 +53,12 @@ class QuestionsController < ApplicationController
   end
   
   def question_params
-    params.require(:question).permit(:name, :memo, :accrual_date)
+    params.require(:question).permit(:name, :memo, :user_id, :genre_id, :year, :month)
+  end
+
+  def login_check
+    if current_user == nil
+      render :root
+    end
   end
 end

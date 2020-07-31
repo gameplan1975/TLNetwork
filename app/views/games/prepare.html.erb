@@ -1,0 +1,12 @@
+<h1>Games#prepare</h1>
+<p>挑戦したいジャンルを選んでね</p>
+<table class="table">
+  <tbody>
+    <% @genres.each do |genre| %>
+      <tr>
+        <th><%= genre.name %></th>
+        <th><%= link_to 'Play!', games_play_path(:select_genre => genre), class: 'btn btn-success'  %></th>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,135 @@
+<h1>Games#result</h1>
+<p>あなたが選んだ答え: <%= @questiona.name%></p>
+
+<!-- 答えあわせ　-->
+<div class="card">
+  <% if @questiona.year <= @question0.year %>
+    <% if @questiona.year <= @question1.year %>
+      <% if @questiona.year <= @question2.year %>
+        <% if @questiona.year <= @question3.year %>
+          <h4 style="color:green">correct!</h4>
+        <% else %>
+          <h5 style="color:red">not coreect..</h5>
+        <% end %>
+      <% else %>
+        <h5 style="color:red">not coreect..</h5>
+      <% end %>
+    <% else %>
+      <h5 style="color:red">not coreect..</h5>
+    <% end %>
+  <% else %>
+    <h5 style="color:red" >not coreect..</h5>
+  <% end %>
+</div>
+<br>
+
+<table class ="table" >
+    <tr>
+      <th><%= @question0.name %></th>
+      <th><p><%= @question0.year %>年　<%= @question0.month %>月</p></th>
+      <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal0">うんちく</button></th>
+    </tr>
+    <tr>
+      <th><%= @question1.name %></th>
+      <th><p><%= @question1.year %>年　<%= @question1.month %>月</p></th>
+      <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal1">うんちく</button></th>
+    </tr>
+    <tr>
+      <th><%= @question2.name %></th>
+      <th><p><%= @question2.year %>年　<%= @question2.month %>月</p></th>
+      <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal2">うんちく</button></th>
+    </tr>
+    <tr>
+      <th><%= @question3.name %></th>
+      <th><p><%= @question3.year %>年　<%= @question3.month %>月</p></th>
+      <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal3">うんちく</button></th>
+    </tr>
+</table>
+
+<%= link_to 'Next Quiz!', games_play_path(:select_genre => @questiona.genre_id), class: 'btn btn-success' %>
+<%= link_to 'Change Genre!', games_prepare_path, class: 'btn btn-success' %>
+<%= link_to 'Back', root_path, class: 'btn btn-primary' %>
+
+<div class="modal fade" id="modal0" tabindex="-1"
+      role="dialog" aria-labelledby="label1" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="label1"><%= @question0.name %></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= @question0.memo %>
+      </div>
+      <div class="modal-footer">
+        <p>出題者：　<%= @question0.user.name %></p>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal1" tabindex="-1"
+      role="dialog" aria-labelledby="label1" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="label1"><%= @question1.name %></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= @question1.memo %>
+      </div>
+      <div class="modal-footer">
+        <p>出題者：　<%= @question1.user.name %></p>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal2" tabindex="-1"
+      role="dialog" aria-labelledby="label1" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="label1"><%= @question2.name %></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= @question2.memo %>
+      </div>
+      <div class="modal-footer">
+        <p>出題者：　<%= @question2.user.name %></p>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal3" tabindex="-1"
+      role="dialog" aria-labelledby="label1" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="label1"><%= @question3.name %></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= @question3.memo %>
+      </div>
+      <div class="modal-footer">
+        <p>出題者：　<%= @question3.user.name %></p>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

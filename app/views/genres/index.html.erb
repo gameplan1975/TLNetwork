@@ -1,11 +1,19 @@
 <h1>Genres index</h1>
-
-<% @genres.each do |genre| %>
-  <div>
-    <%= genre.name %>
-    <%= link_to 'Edit', edit_genre_path(genre) %>
-    <%= link_to 'Destroy', genre, method: :delete %>
-  </div>
-<% end %>
+  <table class="table">
+    <tbody>
+    <% @genres.each do |genre| %>
+      <tr>
+        <th><%= genre.name %></th>
+        <th><%= link_to 'Edit', edit_genre_path(genre), class: 'btn btn-outline-info btn-sm'  %></th>
+        <th><%= link_to 'Destroy', genre, method: :delete, class: 'btn btn-outline-danger btn-sm'  %></th>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <%= paginate @genres %>
 <br>
-<%= link_to 'New genre', new_genre_path %>
+<%= link_to 'Create Genre', new_genre_path, class: 'btn btn-primary' %>
+<%= link_to 'Players Index', players_path, class: 'btn btn-primary'  %>
+<%= link_to 'Questions Index', questions_path, class: 'btn btn-primary'  %>
+<%= link_to 'Massage Board', messages_path, class: 'btn btn-primary' %>
+<%= link_to 'Try Quiz!', games_prepare_path, class: 'btn btn-success' %>
