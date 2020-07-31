@@ -18,19 +18,5 @@
 // require popper
 // require bootstrap-sprockets
 //= require sortablejs/Sortable.js
+//= require audiojs
 //= require_tree .
-
-$("input#id02").click(function(){
-    $.ajax({
-       url: "http://localhost:3000/games/result",
-       type: "GET",
-       data: {content :"text"},
-       datatype: "html",
-       success: function(data){
-         alert("ok");
-       },
-       error: function(data){
-         alert("fail");
-       },
-   });
- });

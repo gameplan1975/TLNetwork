@@ -1,3 +1,8 @@
+<script>
+  audiojs.events.ready(function() {
+    var as = audiojs.createAll();
+  });
+</script>
 <div class="row">
   <div class="col-5">
     <h4><%= @player.user.name %>'s Profile</h4>
@@ -28,6 +33,10 @@
       <p>Comment: </p>
       <%= @player.comment %>
     </div>
+    <div>
+      <%= audio_tag("/audios/sample.mp3",id:"audio") %>
+    </div>
+    <P style="color: gray">*mp3ファイル対応のブラウザでお楽しみください</p>
     <hr>
     <%= link_to 'Edit', edit_player_path(@player), class: 'btn btn-primary' %>
     <%= link_to 'Back', players_path, class: 'btn btn-primary' %>
