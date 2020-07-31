@@ -1,24 +1,52 @@
-# README
+-- READ ME
+title:TLN(Time Line Network)
+-- バージョン
+Ruby 2.6.5 / Ruby on rails 5.2.4
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+-- 概要
+これは歴史上の事件や作品の発表年などの「できごと」４つをランダムにピックアップし、それを古いものから順に並び替えるクイズアプリです。 ユーザーは「クイズに挑戦すること」と出題に使用される「できごとの作成」を楽しむことができます。 対象ユーザーは主にテレビのクイズ番組を見て楽しむ層からスタートして出題ジャンルを増やすことで徐々にカジュアル層に普及します。 そのため、基本的にはスマートフォン対応をメインとし、pcやタブレットでの利用をサブとする画面構成とします。 今後、バナー広告による収益化を目指します。（好みのジャンルが設定できるためクライアントに訴求しやすい）
 
-Things you may want to cover:
+-- 使用する課題
+devise（ログイン機能）, ajaxによる非同期通信（コメント機能）, AWSへのデプロイ（可能であれば）
 
-* Ruby version
+-- 使用する課題外の内容
+audiojs-rails（効果音、BGM）
 
-* System dependencies
+-- 機能一覧
+詳細は下記カタログ設計書を参照
 
-* Configuration
+- できごと登録機能
+- できごと編集機能
+- できごとジャンル登録機能
+- できごと一覧表示機能
+- クイズ出題機能
+- クイズ回答機能
+- クイズ難易度調整機能
+- クイズ回答機能b案
+- クイズ判定機能
+- クイズジャンル選択機能
+- ユーザー登録機能
+- ユーザー編集機能
+- ユーザー削除機能
+- ユーザー一覧機能
+- ランキング表示機能
+- 称号表示機能
+- ログイン機能
+- ログアウト機能
+- 掲示板機能
+- 効果音
+- bgm
+- 仕様書
+https://docs.google.com/spreadsheets/d/e/2PACX-1vQGDVjuZ5pufBKPsAwxOUC4I0flBOaKGsLwbPS9YPagnmNT1Z2VkjAGQZv-tqTDm7ZrkXw7hLmNR_5D/pubhtml
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- カタログ設計書
+- テーブル設定書
+- ER図
+- 画面遷移図
+- ワイヤーフレーム
+- 使用予定gem
+- Audiojs-rails
+- honoka(bootstrap)
+- devise
+- kaminari
+- jquery など
