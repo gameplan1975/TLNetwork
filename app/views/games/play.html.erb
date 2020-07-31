@@ -2,8 +2,6 @@
 <h4 class="text-success">genre:<%= @genre.name %></h4>
 
 <% section = 0 %>
-<% selects = [] %>
-
 
 <ul id="selection" class="list-group" style="list-style: none;">
   <% @questions.each do |question| %>
@@ -12,16 +10,67 @@
   <% end %>
   </ul>
 <br>
-<input type="button" id="id01" value="set Array" onclick="getArray();">
+
+<input type="button" id="id01" value="OK!" class="btn btn-primary" >
 
 <script>
+  //sortable,js使用による選択肢のドラッグ＆ドロップ
+  var selection = document.getElementById('selection');
+  var sortable = Sortable.create(selection);
+  var selectlist = sortable.toArray();
+  const newselectlist = selectlist.filter(n => n !== "1oj" && n !== "1mr");
+
+//jqxhr
+var jqxhr
+$("input#id01").click(function(){
+  //二重投稿の防止CSS
+  $(this).css('point-events','none')
+  if (jqxhr){
+    jqxhr.abort();
+  }
+　　//Ajaxで並び順をコントローラに送信(jqxhrをチェックし複数回通信を防ぐ)
+   jqxhr = $.ajax({
+    url: "http://localhost:3000/games/result",
+    type: "GET",
+    data: {content :newselectlist},
+    datatype: "html",
+    timeout: 3000,
+    cache: false,
+    success: function(data){
+      window.location.href = '/games/result';
+      console.log(newselectlist); 
+    },
+    error: function(data){
+      alert("fail");
+    },
+  });
+});
+
+/*
   var selection = document.getElementById('selection');
   var sortable = Sortable.create(selection);
 
   function getArray(){
     var selectlist = sortable.toArray();
     const newselectlist = selectlist.filter(n => n !== "1oj" && n !== "1mr");
-    console.log(newselectlist);
+    console.log(newselectlist);    
   }
+*/
+  /*
+  $("input#id02").click(function(){
+  $.ajax({
+    url: "http://localhost:3000/games/result",
+    type: "GET",
+    data: {content :"text"},
+    datatype: "html",
+    success: function(data){
+      alert("ok");
+    },
+    error: function(data){
+      alert("fail");
+    },
+  });
+});
+*/
 </script>
 
