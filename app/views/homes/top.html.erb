@@ -2,7 +2,7 @@
 <p>welcome to this historic quiz site!</p>
 <br>
 <% if user_signed_in? %>
-  <% if current_user.player.id == nil %>
+  <% if current_user.player == nil %>
     <%= link_to 'Create Player', new_player_path, class: 'btn btn-warning' %><br><br>
   <% else %>
     <%= link_to "Questions Index", questions_path, class: 'btn btn-primary'  %>
