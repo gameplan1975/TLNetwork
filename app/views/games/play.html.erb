@@ -1,76 +1,27 @@
 <h1>Let's Play</h1>
 <h4 class="text-success">genre:<%= @genre.name %></h4>
-
-<% section = 0 %>
-
-<ul id="selection" class="list-group" style="list-style: none;">
-  <% @questions.each do |question| %>
-    <% section += 1 %>
-    <li data-id="<%= question.id %>" class="list-group-item m-1"><%= section %>. <%= question.name %><li>
-  <% end %>
-  </ul>
+<p>この中で、最も古いできごとは？</P>
 <br>
 
-<input type="button" id="id01" value="OK!" class="btn btn-primary" >
-
-<script>
-  //sortable,js使用による選択肢のドラッグ＆ドロップ
-  var selection = document.getElementById('selection');
-  var sortable = Sortable.create(selection);
-  var selectlist = sortable.toArray();
-  const newselectlist = selectlist.filter(n => n !== "1oj" && n !== "1mr");
-
-//jqxhr
-var jqxhr
-$("input#id01").click(function(){
-  //二重投稿の防止CSS
-  $(this).css('point-events','none')
-  if (jqxhr){
-    jqxhr.abort();
-  }
-　　//Ajaxで並び順をコントローラに送信(jqxhrをチェックし複数回通信を防ぐ)
-   jqxhr = $.ajax({
-    url: "http://localhost:3000/games/result",
-    type: "GET",
-    data: {content :newselectlist},
-    datatype: "html",
-    timeout: 3000,
-    cache: false,
-    success: function(data){
-      window.location.href = '/games/result';
-      console.log(newselectlist); 
-    },
-    error: function(data){
-      alert("fail");
-    },
-  });
-});
-
-/*
-  var selection = document.getElementById('selection');
-  var sortable = Sortable.create(selection);
-
-  function getArray(){
-    var selectlist = sortable.toArray();
-    const newselectlist = selectlist.filter(n => n !== "1oj" && n !== "1mr");
-    console.log(newselectlist);    
-  }
-*/
-  /*
-  $("input#id02").click(function(){
-  $.ajax({
-    url: "http://localhost:3000/games/result",
-    type: "GET",
-    data: {content :"text"},
-    datatype: "html",
-    success: function(data){
-      alert("ok");
-    },
-    error: function(data){
-      alert("fail");
-    },
-  });
-});
-*/
-</script>
-
+<table class="table">
+<tr>
+<th><%= @questions[0].name %></th>
+<th><%= link_to 'select!', games_result_path(:answer => @questions[0].id, :select0 => @questions[0].id, :select1 => @questions[1].id,
+:select2 => @questions[2], :select3 => @questions[3].id ), class: 'btn btn-success'  %></th>
+</tr>
+<tr>
+<th><%= @questions[1].name %></th>
+<th><%= link_to 'select!', games_result_path(:answer => @questions[1].id, :select0 => @questions[0].id, :select1 => @questions[1].id,
+:select2 => @questions[2], :select3 => @questions[3].id ), class: 'btn btn-success'  %></th>
+</tr>
+<tr>
+<th><%= @questions[2].name %></th>
+<th><%= link_to 'select!', games_result_path(:answer => @questions[2].id, :select0 => @questions[0].id, :select1 => @questions[1].id,
+:select2 => @questions[2], :select3 => @questions[3].id ), class: 'btn btn-success'  %></th>
+</tr>
+<tr>
+<th><%= @questions[3].name %></th>
+<th><%= link_to 'select!', games_result_path(:answer => @questions[3].id, :select0 => @questions[0].id, :select1 => @questions[1].id,
+:select2 => @questions[2], :select3 => @questions[3].id ), class: 'btn btn-success'  %></th>
+</tr>
+</table>

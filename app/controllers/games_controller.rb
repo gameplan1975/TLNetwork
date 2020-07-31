@@ -11,16 +11,17 @@ class GamesController < ApplicationController
   end
 
   def result
-    @selects = params[:content]
+    @answer = params[:answer]
+    @select0 = params[:select0]
+    @select1 = params[:select1]
+    @select2 = params[:select2]
+    @select3 = params[:select3]
 
-    @select0 = @selects[0]
-    @select1 = @selects[1]
-    @select2 = @selects[2]
-    @select3 = @selects[3]
-    @question0 = Question.find_by(id: @select0)
-    @question1 = Question.find_by(id: @select1)
-    @question2 = Question.find_by(id: @select2)
-    @question3 = Question.find_by(id: @select3)
+    @questiona = Question.find(@answer)
+    @question0 = Question.find(@select0)
+    @question1 = Question.find(@select1)
+    @question2 = Question.find(@select2)
+    @question3 = Question.find(@select3)
 
     #binding.irb
 
